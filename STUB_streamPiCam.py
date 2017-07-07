@@ -3,7 +3,7 @@ import picamera
 
 with picamera.PiCamera() as camera:
     camera.resolution = (640, 480)
-    camera.framerate = 1/60         # one image per second // ein Bild pro Minute
+    camera.framerate = 1/60
 
     server_socket = socket.socket()
     server_socket.bind(('0.0.0.0', 8000))
