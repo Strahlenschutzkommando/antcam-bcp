@@ -1,5 +1,4 @@
-#!/usr/bin/python3
-# -*- coding: utf-8 -*-
+#!/usr/bin/env python3
 
 '''
 This code was inspired by the third python coding example on
@@ -14,14 +13,14 @@ import socket
 import picamera
 
 with picamera.PiCamera() as cam:
-    cam.resolution = (640, 480)
+    cam.resolution = (960, 720)
     cam.framerate = 1/60
 
     server_socket = socket.socket()
     server_socket.bind(('0.0.0.0', 8000))
     server_socket.listen(0)
 
-    # Accept exactly one connection and convert stream to file-like object
+    # Accept exactly one connection once and convert stream to file-like object
     connection = server_socket.accept()[0].makefile('wb')
     try:
         cam.start_recording(connection, format='h264')
