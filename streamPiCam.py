@@ -6,6 +6,7 @@ http://picamera.readthedocs.io/en/release-1.10/recipes1.html#recording-to-a-netw
 However, multiple customizations were applied and thus only the basic setup is
 identical.
 
+Availible under the MIT license.
 2017 Strahlenschutzkommando@Github
 '''
 
