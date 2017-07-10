@@ -2,7 +2,8 @@
 
 '''
 This code was inspired by the third python coding example on
-http://picamera.readthedocs.io/en/release-1.10/recipes1.html#recording-to-a-network-stream
+http://picamera.readthedocs.io/en/release-1.10/recipes1.html
+                              #recording-to-a-network-stream
 However, multiple customizations were applied and thus only the basic setup is
 identical.
 
