@@ -14,20 +14,23 @@ Availible under the MIT license.
 import socket
 import picamera
 
-with picamera.PiCamera() as cam:
-    cam.resolution = (960, 720)
-    cam.framerate = 1/60
+try:
+    with picamera.PiCamera() as cam:
+        cam.resolution = (960, 720)
+        cam.framerate = 1/60
 
-    server_socket = socket.socket()
-    server_socket.bind(('0.0.0.0', 8000))
-    server_socket.listen(0)
+        server_socket = socket.socket()
+        server_socket.bind(('0.0.0.0', 8000))
+        while(True):
+            server_socket.listen(0)
 
-    # Accept exactly one connection once and convert stream to file-like object
-    connection = server_socket.accept()[0].makefile('wb')
-    try:
-        cam.start_recording(connection, format='h264')
-        cam.wait_recording(60)
-        cam.stop_recording()
-    finally:
-        connection.close()
-        server_socket.close()
+            # Accept exactly one connection once and convert stream to file-like object
+            connection = server_socket.accept()[0].makefile('wb')
+            try:
+                cam.start_recording(connection, format='h264')
+                cam.wait_recording(60)
+                cam.stop_recording()
+            finally:
+                connection.close()
+finally:
+    server_socket.close()
