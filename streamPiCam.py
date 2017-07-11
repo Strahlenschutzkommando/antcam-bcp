@@ -24,7 +24,8 @@ with picamera.PiCamera() as cam:
         while(True):
             server_socket.listen(0)
 
-            # Accept exactly one connection once and convert stream to file-like object
+            # Accept exactly one connection once and 
+            # convert stream to file-like object
             connection = server_socket.accept()[0].makefile('wb')
             try:
                 cam.start_recording(connection, format='h264')
