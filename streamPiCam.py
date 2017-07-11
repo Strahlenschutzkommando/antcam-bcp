@@ -14,12 +14,12 @@ Availible under the MIT license.
 import socket
 import picamera
 
-try:
-    with picamera.PiCamera() as cam:
-        cam.resolution = (960, 720)
-        cam.framerate = 1/60
+with picamera.PiCamera() as cam:
+    cam.resolution = (960, 720)
+    cam.framerate = 1/60
 
-        server_socket = socket.socket()
+    server_socket = socket.socket()
+    try:
         server_socket.bind(('0.0.0.0', 8000))
         while(True):
             server_socket.listen(0)
@@ -32,5 +32,5 @@ try:
                 cam.stop_recording()
             finally:
                 connection.close()
-finally:
-    server_socket.close()
+    finally:
+        server_socket.close()
